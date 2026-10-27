@@ -2,7 +2,7 @@
 export const coach = {
   name: 'Nafn ráðgjafa',
   title: 'Vottaður svefnráðgjafi barna',
-  photo: '/coach.svg',
+  photo: `${import.meta.env.BASE_URL}coach.svg`,
   bio: 'Hér kemur stutt kynning á ráðgjafanum: menntun, reynsla og hvernig hún eða hann vinnur með fjölskyldum. Textinn er staðgengill.',
   email: 'radgjafi@example.is',
   phone: '+354 000 0000',

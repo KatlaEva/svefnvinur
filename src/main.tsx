@@ -6,7 +6,7 @@ import { registerSW } from 'virtual:pwa-register';
 import App from './App';
 import './styles.css';
 
-registerSW({ immediate: true });
+if (!import.meta.env.VITE_SHOWCASE) registerSW({ immediate: true });
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

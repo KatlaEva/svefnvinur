@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { AgePreview, birthError, GoalPicker, PrematureFields } from '../components/ChildFields';
 import { disclaimer } from '../content/advice';
 import { is } from '../content/is';
-import { addChild } from '../data/store';
+import { addChild, replaceDemoData } from '../data/store';
+import { buildDemo } from '../lib/seed';
 import type { Goal } from '../data/types';
 import { dateKey } from '../lib/time';
 
@@ -67,6 +68,21 @@ export function Onboarding() {
                 maxLength={40}
               />
             </label>
+            {import.meta.env.VITE_SHOWCASE && (
+              <div className="age-result stack">
+                <p>{O.showcaseNote}</p>
+                <button
+                  type="button"
+                  className="btn btn-secondary btn-block"
+                  onClick={() => {
+                    const demo = buildDemo(Date.now());
+                    replaceDemoData(demo.children, demo.logs, demo.outcomes);
+                  }}
+                >
+                  {O.showcaseDemo}
+                </button>
+              </div>
+            )}
           </>
         )}
 

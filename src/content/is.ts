@@ -58,6 +58,8 @@ export const is = {
     wakeLabel: 'Hvenær vaknar barnið venjulega?',
     goalLabel: 'Hvað viltu helst bæta?',
     start: 'Byrja',
+    showcaseNote: 'Þetta er frumgerð. Skráðu þitt eigið barn eða skoðaðu appið með sýnigögnum.',
+    showcaseDemo: 'Skoða með sýnigögnum',
     errors: {
       name: 'Skrifaðu nafn barnsins.',
       missing: 'Veldu fæðingardag.',

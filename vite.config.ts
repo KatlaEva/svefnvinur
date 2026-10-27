@@ -5,13 +5,16 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 import pkg from './package.json' with { type: 'json' };
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  // `--mode showcase` builds a version that can be hosted inside a sandboxed frame (relative paths, no service worker)
+  base: mode === 'showcase' ? './' : '/',
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
   },
   plugins: [
     react(),
     VitePWA({
+      disable: mode === 'showcase',
       registerType: 'autoUpdate',
       includeAssets: ['icons/apple-touch-icon.png', 'icons/favicon.svg', 'coach.svg'],
       manifest: {
@@ -41,4 +44,4 @@ export default defineConfig({
     include: ['tests/**/*.test.ts'],
     environment: 'node',
   },
-});
+}));

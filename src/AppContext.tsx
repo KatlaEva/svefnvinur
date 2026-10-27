@@ -134,7 +134,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       store.markNotified(key);
       const body = is.notify.body(child.name, rules.reminderBeforeRoutine);
       navigator.serviceWorker?.ready
-        .then((reg) => reg.showNotification(is.notify.title, { body, icon: '/icons/icon-192.png', tag: key }))
+        .then((reg) => reg.showNotification(is.notify.title, { body, icon: `${import.meta.env.BASE_URL}icons/icon-192.png`, tag: key }))
         .catch(() => new Notification(is.notify.title, { body }));
     };
     if (now >= fireAt) {

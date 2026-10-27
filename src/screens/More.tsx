@@ -150,7 +150,7 @@ function RoutineEditor() {
 const showDev = (() => {
   try {
     if (new URLSearchParams(location.search).has('dev')) localStorage.setItem('svefnvinur:dev', '1');
-    return import.meta.env.DEV || localStorage.getItem('svefnvinur:dev') === '1';
+    return import.meta.env.DEV || Boolean(import.meta.env.VITE_SHOWCASE) || localStorage.getItem('svefnvinur:dev') === '1';
   } catch {
     return import.meta.env.DEV;
   }
@@ -283,9 +283,11 @@ export function MoreScreen() {
           {M.privacy}
         </h2>
         <p>{M.privacyText}</p>
-        <button type="button" className="btn btn-secondary btn-block" onClick={exportData}>
-          <Download size={20} aria-hidden="true" /> {M.export}
-        </button>
+        {!import.meta.env.VITE_SHOWCASE && (
+          <button type="button" className="btn btn-secondary btn-block" onClick={exportData}>
+            <Download size={20} aria-hidden="true" /> {M.export}
+          </button>
+        )}
         <button type="button" className="btn btn-secondary btn-block" onClick={() => fileRef.current?.click()}>
           <Upload size={20} aria-hidden="true" /> {M.import}
         </button>
