@@ -20,9 +20,12 @@ Other scripts:
 | `npm test` | Vitest unit tests (age, schedule, NÚNA state machine, progress) |
 | `npm run contrast` | Checks every text/background token pair in both themes against WCAG AA |
 | `npm run build` | Type-check + production build with service worker |
+| `npm run build:pages` | Build the public demo for GitHub Pages (served from `/svefnvinur/`) |
 | `npm run preview` | Serve the production build (use this to test install/offline) |
 | `npm run check` | contrast + tests + build in one go |
 | `npm run icons` | Render the PWA icons and favicon from `public/icons/icon.svg` |
+
+**Public demo:** every push to `main` builds `npm run build:pages` and publishes it to GitHub Pages at https://katlaeva.github.io/svefnvinur/ (see `.github/workflows/pages.yml`). That build shows a one-tap *Skoða með sýnigögnum* button on the first screen.
 
 **Demo data:** in development, Meira → *Fyrir þróun* → *Sýnigögn* fills 14 days of logs for a 14-month-old. In a production build, open the app once with `?dev` in the URL to show that switch.
 

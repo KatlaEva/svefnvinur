@@ -6,8 +6,9 @@ import { VitePWA } from 'vite-plugin-pwa';
 import pkg from './package.json' with { type: 'json' };
 
 export default defineConfig(({ mode }) => ({
-  // `--mode showcase` builds a version that can be hosted inside a sandboxed frame (relative paths, no service worker)
-  base: mode === 'showcase' ? './' : '/',
+  // `--mode showcase`: hosted inside a sandboxed frame (relative paths, no service worker).
+  // `--mode pages`: the public demo on GitHub Pages, served from /svefnvinur/.
+  base: mode === 'showcase' ? './' : mode === 'pages' ? '/svefnvinur/' : '/',
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
   },
@@ -22,8 +23,8 @@ export default defineConfig(({ mode }) => ({
         short_name: 'Svefnvinur',
         description: 'Svefnráðgjöf fyrir börn: skráðu svefn, fylgdu dagsrytma og fáðu hjálp strax.',
         lang: 'is',
-        start_url: '/',
-        scope: '/',
+        start_url: './',
+        scope: './',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#FAF6EF',
@@ -36,7 +37,7 @@ export default defineConfig(({ mode }) => ({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
-        navigateFallback: '/index.html',
+        navigateFallback: 'index.html',
       },
     }),
   ],

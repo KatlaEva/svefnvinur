@@ -150,7 +150,7 @@ function RoutineEditor() {
 const showDev = (() => {
   try {
     if (new URLSearchParams(location.search).has('dev')) localStorage.setItem('svefnvinur:dev', '1');
-    return import.meta.env.DEV || Boolean(import.meta.env.VITE_SHOWCASE) || localStorage.getItem('svefnvinur:dev') === '1';
+    return import.meta.env.DEV || Boolean(import.meta.env.VITE_DEMO) || localStorage.getItem('svefnvinur:dev') === '1';
   } catch {
     return import.meta.env.DEV;
   }

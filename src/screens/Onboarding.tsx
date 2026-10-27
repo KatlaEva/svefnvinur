@@ -68,7 +68,7 @@ export function Onboarding() {
                 maxLength={40}
               />
             </label>
-            {import.meta.env.VITE_SHOWCASE && (
+            {import.meta.env.VITE_DEMO && (
               <div className="age-result stack">
                 <p>{O.showcaseNote}</p>
                 <button
