@@ -22,7 +22,7 @@ Other scripts:
 | `npm run build` | Type-check + production build with service worker |
 | `npm run preview` | Serve the production build (use this to test install/offline) |
 | `npm run check` | contrast + tests + build in one go |
-| `npm run icons` | Regenerate the PWA icons in `public/icons/` |
+| `npm run icons` | Render the PWA icons and favicon from `public/icons/icon.svg` |
 
 **Demo data:** in development, Meira → *Fyrir þróun* → *Sýnigögn* fills 14 days of logs for a 14-month-old. In a production build, open the app once with `?dev` in the URL to show that switch.
 
@@ -51,7 +51,7 @@ src/
   styles.css       ← design tokens (day + night) and all styles
 scripts/
   contrast.mjs     ← WCAG checker (reads tokens straight from styles.css)
-  make-icons.mjs   ← dependency-free PNG icon generator
+  make-icons.mjs   ← renders PNG icons + favicon from public/icons/icon.svg
 tests/             ← Vitest
 ```
 
@@ -63,6 +63,7 @@ tests/             ← Vitest
   - `rules`: routine length, short-nap threshold, how much bedtime moves after a missed or short nap, night-theme timing
   - `tips`, `safeSleep`, `doctorNote`, `disclaimer`
   - `helpFlows`: the five help flows, with steps per age band (`0-3m`, `4-6m`, `7-12m`, `1-2y`, `2-4y`, `4y+`). A step can have `waitMinutes` to show the wait ring.
+- **App icon:** edit `public/icons/icon.svg` (keep the artwork inside `<g id="art">`), then run `npm run icons`.
 - **Coach details:** `src/config/coach.ts`; replace `public/coach.svg` with a real photo.
 - **Colours:** the token blocks at the top of `src/styles.css`. Run `npm run contrast` after any change.
 
